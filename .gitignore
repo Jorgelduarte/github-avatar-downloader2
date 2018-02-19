@@ -61,3 +61,7 @@ typings/
 .next
 
 secrets.js
+
+test.js
+
+avatars/
