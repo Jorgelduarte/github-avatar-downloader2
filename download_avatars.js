@@ -30,8 +30,7 @@ getRepoContributors(repositoryOwner, repositoryName, function(err, result) {
         console.log ("The folder 'avatars' alredy exist")
     } else {
         console.log ("The folder 'avatars' was created")
-        fs.mkdir('avatars',function(result){
-        })
+        fs.mkdir('avatars')
     }
     
     for (var i = 0; i < result.length; i++){
