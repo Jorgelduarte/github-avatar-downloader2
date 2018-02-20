@@ -18,14 +18,13 @@ function getRepoContributors(repoOwner, repoName, cb) {
     };
 
     request(options, function(err, res, body) {
-        cb(err, body);
+        cb(err, JSON.parse(body));
     });
 }
 
 
 getRepoContributors(repositoryOwner, repositoryName, function(err, result) {
     console.log("Errors:", err);
-    var resultJSON = JSON.parse(result);
 
     if (fs.existsSync("avatars")) {
         console.log ("The folder 'avatars' alredy exist")
@@ -35,9 +34,9 @@ getRepoContributors(repositoryOwner, repositoryName, function(err, result) {
         })
     }
     
-    for (var i = 0; i < resultJSON.length; i++){
-        var newUrl = resultJSON[i].avatar_url;
-        var login = resultJSON[i].login
+    for (var i = 0; i < result.length; i++){
+        var newUrl = result[i].avatar_url;
+        var login = result[i].login
 
         function downloadImageByURL(onlyUrl, filePath) {
             request.get(onlyUrl)              
